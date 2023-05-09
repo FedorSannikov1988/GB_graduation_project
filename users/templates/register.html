@@ -52,7 +52,7 @@
                 {% csrf_token %}
 
                 <div class="form-group required">
-                    <label class="col-sm-2 control-label" for="input-lastname">Имя пользвателя</label>
+                    <label class="col-sm-2 control-label" for="{{ form.username.id_for_label }}">Имя пользвателя</label>
                     {{ form.username }}
                 </div>
 
