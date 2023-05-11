@@ -5,7 +5,9 @@ from django.urls import reverse
 from users.forms import UserLoginForm, UserRegisterForm, UserProfileForm
 from shop.views import title_for_basic_template, data_for_basic_template
 
+
 def login(request):
+    message_error=''
     title_login = 'Вход в учетную запись - '
 
     if request.method == 'POST':
@@ -20,12 +22,18 @@ def login(request):
             if user:
                 auth.login(request, user)
                 return HttpResponseRedirect(reverse('users:my_account'))
+            else:
+                message_error = 'Неверное имя пользоваеля или пароль !'
         else:
+            print(form)
             print(form.errors)
+
+
     else:
         form = UserLoginForm()
 
     context = {
+        'message_error': message_error,
         'form': form,
         'page_title': title_login + title_for_basic_template(),
     }

@@ -12,10 +12,10 @@ class UserLoginForm(AuthenticationForm):
 
 # или другой вариант:
 
+
 class UserLoginForm(forms.Form):
-    class Meta:
-        model = User
-        fields = ['username', 'password']
+
+    fields = ['username', 'password']
 
     username = forms.CharField(
             label="Логин",
@@ -25,7 +25,7 @@ class UserLoginForm(forms.Form):
         )
 
     password = forms.CharField(
-            max_length=25,
+            max_length=50,
             label="Пароль",
             widget=forms.PasswordInput(
                 attrs={'class': 'form-control',
